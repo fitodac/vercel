@@ -1,19 +1,13 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require('express')
+const app = express()
+const port = 3000
 
-const db = require('./db');
+app.use(express.json())
 
-const router = require('./network/routes');
+app.get('/', (req, res) => {
+    res.send('Express server')
+})
 
-db('mongodb://user:D3e2LBnmNvq1uWjG@db_user_express_mongo/cluster0');
-
-var app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-
-router(app);
-
-app.use('/app', express.static('public'));
-
-app.listen(3000);
-console.log('La aplicación está escuchando en http://localhost:3000');
+app.listen(port, () => {
+	console.log(`http://localhost:${port}`)
+})
