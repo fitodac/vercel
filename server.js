@@ -8,6 +8,11 @@ app.get('/', (req, res) => {
     res.send('Express server')
 })
 
+app.use('/api', (req, res, next) => {
+    res.send('Solicitud a la api')
+		next()
+})
+
 app.listen(port, () => {
 	console.log(`http://localhost:${port}`)
 })
